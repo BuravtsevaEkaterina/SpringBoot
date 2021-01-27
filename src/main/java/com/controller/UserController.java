@@ -1,12 +1,12 @@
 package com.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.service.UserService;
-
-import java.security.Principal;
 
 @Controller
 public class UserController {
@@ -15,8 +15,9 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/user")
-    public String userPage(Model model, Principal principal) {
-        model.addAttribute("user", userService.getUserByUsername(principal.getName()));
+    public String userPage(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("user", userService.getUserByUsername(auth.getName()));
         return "user";
     }
 }
