@@ -5,6 +5,7 @@ import com.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,9 @@ public class AdminController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping
     public String adminPage(Model model, Principal principal) {
@@ -53,9 +57,11 @@ public class AdminController {
         User updUser = userService.getUserById(user.getId());
         updUser.setUsername(user.getUsername());
         updUser.setEmail(user.getEmail());
+        updUser.setAge(user.getAge());
+        updUser.setLastname(user.getLastname());
 
-        if (user.getPassword() != null) {
-            updUser.setPassword(user.getPassword());
+        if (!user.getPassword().equals("")) {
+            updUser.setPassword(passwordEncoder.encode(user.getPassword()));
         }
 
         Set<Role> roleSet = new HashSet<>();
