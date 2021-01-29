@@ -71,7 +71,6 @@ public class AdminController {
         updUser.setRoles(roleSet);
 
         userService.saveUser(updUser);
-
         return "redirect:/admin";
     }
 
