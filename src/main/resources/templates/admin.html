@@ -10,6 +10,7 @@
 
     <title>Admin Panel</title>
 </head>
+
 <body>
 <div class="bg-light">
 
@@ -74,7 +75,8 @@
                                         <td>
                                             <a class="btn btn-info btn-sm"
                                                data-toggle="modal" th:attr="data-target='#editModal'+*{user.id}">
-                                                Edit</a>
+                                                Edit
+                                            </a>
                                         </td>
 
                                         <!--Modal for updating user data-->
@@ -96,49 +98,46 @@
                                                         <div class="modal-body text-center">
 
                                                             <div class="form-group">
-                                                                <label for="editId"
-                                                                       class="col-form-label"><b>ID</b></label>
+                                                                <label class="col-form-label"><b>ID</b></label>
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                       id="editId"
                                                                        name="id" th:value="*{id}" readonly>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="editUsername" class="col-form-label"><b>First
-                                                                    name</b></label>
+                                                                <label class="col-form-label">
+                                                                    <b>First name</b></label>
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                       id="editUsername" name="username"
+                                                                       name="username"
                                                                        th:value="*{username}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="editLastname" class="col-form-label"><b>Last
-                                                                    name</b></label>
+                                                                <label class="col-form-label">
+                                                                    <b>Last name</b></label>
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                       id="editLastname" name="lastname"
+                                                                       name="lastname"
                                                                        th:value="*{lastname}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="editAge"
-                                                                       class="col-form-label"><b>Age</b></label>
-                                                                <input type="number" class="form-control form-control-sm"
-                                                                       id="editAge" name="age"
+                                                                <label class="col-form-label"><b>Age</b></label>
+                                                                <input type="number"
+                                                                       class="form-control form-control-sm"
+                                                                       name="age"
                                                                        th:value="*{age}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="editEmail"
-                                                                       class="col-form-label"><b>Email</b></label>
+                                                                <label class="col-form-label"><b>Email</b></label>
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                       id="editEmail" name="email"
+                                                                       name="email"
                                                                        th:value="*{email}">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="editPassword" class="col-form-label"><b>Password</b></label>
+                                                                <label class="col-form-label"><b>Password</b></label>
                                                                 <input type="password"
                                                                        class="form-control form-control-sm"
-                                                                       id="editPassword" name="password"
+                                                                       name="password"
                                                                        th:name="password">
                                                             </div>
 
-                                                            <select class="form-select" multiple id="editRoles" size="2"
+                                                            <select class="form-select" multiple size="2"
                                                                     name="role" style="width: 200px">
                                                                 <option value="ROLE_ADMIN">ADMIN</option>
                                                                 <option value="ROLE_USER" selected>USER</option>
@@ -161,16 +160,15 @@
                                         </td>
                                         <!--Modal for delete user-->
                                         <div class="modal fade" th:id="*{'deleteModal'+{user.id}}" tabindex="-1"
-                                             role="dialog"
-                                             aria-labelledby="deleteModalLabel"
-                                             aria-hidden="true">
+                                             role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <form th:action="@{/admin/delete}" th:method="POST"
                                                           th:object="${user}">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteModalLabel">Delete
-                                                                user</h5>
+                                                            <h5 class="modal-title" id="deleteModalLabel">
+                                                                Delete user
+                                                            </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -179,51 +177,45 @@
                                                         <div class="modal-body text-center">
 
                                                             <div class="form-group">
-                                                                <label for="deleteId"
-                                                                       class="col-form-label"><b>ID</b></label>
+                                                                <label class="col-form-label"><b>ID</b></label>
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                       id="deleteId"
                                                                        name="id" th:value="*{id}" readonly>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="deleteUsername" class="col-form-label"><b>First
-                                                                    name</b></label>
+                                                                <label class="col-form-label">
+                                                                    <b>First name</b>
+                                                                </label>
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                       id="deleteUsername" name="username"
-                                                                       th:value="*{username}" readonly>
+                                                                       name="username" th:value="*{username}" readonly>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="deleteLastname" class="col-form-label"><b>Last
-                                                                    name</b></label>
+                                                                <label class="col-form-label">
+                                                                    <b>Last name</b>
+                                                                </label>
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                       id="deleteLastname" name="lastname"
-                                                                       th:value="*{lastname}" readonly>
+                                                                       name="lastname" th:value="*{lastname}" readonly>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="deleteAge" class="col-form-label"><b>Age</b></label>
-                                                                <input type="number" class="form-control form-control-sm"
-                                                                       id="deleteAge" name="age"
-                                                                       th:value="*{age}" readonly>
+                                                                <label class="col-form-label"><b>Age</b></label>
+                                                                <input type="number"
+                                                                       class="form-control form-control-sm"
+                                                                       name="age" th:value="*{age}" readonly>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="deleteEmail"
-                                                                       class="col-form-label"><b>Email</b></label>
+                                                                <label class="col-form-label"><b>Email</b></label>
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                       id="deleteEmail" name="email"
-                                                                       th:value="*{email}" readonly>
+                                                                       name="email" th:value="*{email}" readonly>
                                                             </div>
-
-                                                            <select class="form-select" multiple id="deleteRoles"
-                                                                    size="2"
+                                                            <select class="form-select" multiple size="2"
                                                                     name="role" disabled style="width: 200px">
                                                                 <option value="ROLE_ADMIN">ADMIN</option>
                                                                 <option value="ROLE_USER" selected>USER</option>
                                                             </select>
-
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close
+                                                                    data-dismiss="modal">
+                                                                Close
                                                             </button>
                                                             <button type="submit" class="btn btn-danger">Delete</button>
                                                         </div>
